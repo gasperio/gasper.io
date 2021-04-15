@@ -19,12 +19,10 @@ jobs:
         restore-keys: |
           ${{ runner.OS }}-node-
           ${{ runner.OS }}-
-    - name: Dependencies
-      run: npm ci
-    - name: Build
-      run: npm run build
-    - name: Deploy
-      uses: peaceiris/actions-gh-pages@v3
+    - run: npm ci
+    - run: npm run build
+    - uses: peaceiris/actions-gh-pages@v3
       with:
         github_token: ${{ secrets.GITHUB_TOKEN }}
+        cname: gasper.io
         publish_dir: ./build
